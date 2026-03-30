@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "status": 200,
+    "timestamp": "2026-03-30T01:30:39Z",
+    "totalItems": 4
+  },
+  "data": [
+    {
+      "productId": "ITM-001",
+      "name": "Teclado Mecánico Keychron K2",
+      "category": "Periféricos",
+      "price": 1850.00,
+      "currency": "MXN",
+      "stock": 24,
+      "specs": {
+        "switchType": "Brown",
+        "wireless": true
+      },
+      "imagePath": "../assets/keyboard.jpg"
+    },
+    {
+      "productId": "ITM-002",
+      "name": "Monitor Dell UltraSharp 27",
+      "category": "Displays",
+      "price": 8500.00,
+      "currency": "MXN",
+      "stock": 5,
+      "specs": {
+        "resolution": "4K",
+        "refreshRate": "60Hz"
+      },
+      "imagePath": "../assets/monitor.jpg"
+    },
+    {
+      "productId": "ITM-003",
+      "name": "Switch Cisco Catalyst 2960-X",
+      "category": "Redes",
+      "price": 12400.00,
+      "currency": "MXN",
+      "stock": 2,
+      "specs": {
+        "ports": 24,
+        "managed": true
+      },
+      "imagePath": "../assets/switch.jpg"
+    },
+    {
+      "productId": "ITM-004",
+      "name": "NVIDIA RTX 4070 Super",
+      "category": "Componentes",
+      "price": 13200.00,
+      "currency": "MXN",
+      "stock": 0,
+      "specs": {
+        "vram": "12GB",
+        "architecture": "Ada Lovelace"
+      },
+      "imagePath": "../assets/gpu.jpg"
+    }
+  ]
+}
