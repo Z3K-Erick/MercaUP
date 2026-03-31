@@ -83,6 +83,21 @@ function agregarAlCarrito(productoId) {
     }
 }
 
+function eliminarDelCarrito(productoId) {
+    const cantidadDevuelta = carrito.filter(id => id === productoId).length;
+    
+    carrito = carrito.filter(id => id !== productoId);
+    localStorage.setItem('carritoMercaUP', JSON.stringify(carrito));
+    
+    const productoIndex = todosLosProductos.findIndex(p => p.productId === productoId);
+    if (productoIndex !== -1) {
+        todosLosProductos[productoIndex].stock += cantidadDevuelta;
+    }
+    
+    renderCatalog(todosLosProductos);
+    actualizarHUDCarrito();
+}
+
 function actualizarHUDCarrito() {
     if (cartContainer) {
         cartContainer.innerHTML = carrito.length > 0 ? cartFullComponent : cartEmptyComponent;
@@ -124,9 +139,10 @@ function renderizarDrawerCarrito() {
             const subtotal = p.price * cantidad;
             total += subtotal;
             html += `
-                <div class="cart-item-row">
-                    <span>${p.name} <strong>(x${cantidad})</strong></span>
-                    <span>$${subtotal.toFixed(2)}</span>
+                <div class="cart-item-row" style="align-items: center;">
+                    <span style="flex-grow: 1;">${p.name} <strong>(x${cantidad})</strong></span>
+                    <span style="margin-right: 15px;">$${subtotal.toFixed(2)}</span>
+                    <button class="btn-eliminar" data-id="${id}" style="background: none; border: none; cursor: pointer; color: red; font-size: 1.2rem;">🗑️</button>
                 </div>
             `;
         }
@@ -169,6 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('close-drawer').addEventListener('click', () => {
         document.getElementById('cart-drawer').classList.remove('open');
+    });
+
+    document.getElementById('cart-items-container')?.addEventListener('click', (event) => {
+        const btnEliminar = event.target.closest('.btn-eliminar');
+        if (btnEliminar) {
+            eliminarDelCarrito(btnEliminar.getAttribute('data-id'));
+        }
     });
 
     fetchProducts();
