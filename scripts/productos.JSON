@@ -2,7 +2,7 @@
   "metadata": {
     "status": 200,
     "timestamp": "2026-03-30T01:30:39Z",
-    "totalItems": 4
+    "totalItems": 18
   },
   "data": [
     {
@@ -56,6 +56,191 @@
         "architecture": "Ada Lovelace"
       },
       "imagePath": "assets/gpu.jpg"
+    },
+    {
+      "productId": "ITM-005",
+      "name": "Mouse Logitech MX Master 3S",
+      "category": "Periféricos",
+      "price": 2200.00,
+      "currency": "MXN",
+      "stock": 15,
+      "specs": {
+        "dpi": "8000",
+        "wireless": true
+      },
+      "imagePath": "assets/mouse.jpg"
+    },
+    {
+      "productId": "ITM-006",
+      "name": "Laptop Lenovo ThinkPad X1 Carbon",
+      "category": "Computadoras",
+      "price": 32500.00,
+      "currency": "MXN",
+      "stock": 7,
+      "specs": {
+        "processor": "Intel Core i7",
+        "ram": "16GB",
+        "storage": "512GB SSD"
+      },
+      "imagePath": "assets/laptop.jpg"
+    },
+    {
+      "productId": "ITM-007",
+      "name": "Router ASUS ROG Rapture GT-AX11000",
+      "category": "Redes",
+      "price": 9800.00,
+      "currency": "MXN",
+      "stock": 10,
+      "specs": {
+        "wifiStandard": "WiFi 6",
+        "bands": "Tri-Band"
+      },
+      "imagePath": "assets/router.jpg"
+    },
+    {
+      "productId": "ITM-008",
+      "name": "SSD Samsung 990 Pro 2TB",
+      "category": "Almacenamiento",
+      "price": 5200.00,
+      "currency": "MXN",
+      "stock": 18,
+      "specs": {
+        "type": "NVMe",
+        "readSpeed": "7450MB/s"
+      },
+      "imagePath": "assets/ssd.jpg"
+    },
+    {
+      "productId": "ITM-009",
+      "name": "Procesador AMD Ryzen 9 7950X",
+      "category": "Componentes",
+      "price": 14500.00,
+      "currency": "MXN",
+      "stock": 6,
+      "specs": {
+        "cores": 16,
+        "threads": 32,
+        "baseClock": "4.5GHz"
+      },
+      "imagePath": "assets/cpu.jpg"
+    },
+    {
+      "productId": "ITM-010",
+      "name": "Placa Madre ASUS TUF Gaming X670E",
+      "category": "Componentes",
+      "price": 7200.00,
+      "currency": "MXN",
+      "stock": 12,
+      "specs": {
+        "socket": "AM5",
+        "formFactor": "ATX",
+        "memorySupport": "DDR5"
+      },
+      "imagePath": "assets/motherboard.jpg"
+    },
+    {
+      "productId": "ITM-011",
+      "name": "Memoria RAM Corsair Vengeance 32GB (2x16GB)",
+      "category": "Componentes",
+      "price": 3100.00,
+      "currency": "MXN",
+      "stock": 20,
+      "specs": {
+        "type": "DDR5",
+        "speed": "6000MHz"
+      },
+      "imagePath": "assets/ram.jpg"
+    },
+    {
+      "productId": "ITM-012",
+      "name": "Fuente de Poder EVGA SuperNOVA 850W",
+      "category": "Componentes",
+      "price": 2800.00,
+      "currency": "MXN",
+      "stock": 14,
+      "specs": {
+        "certification": "80+ Gold",
+        "modular": true
+      },
+      "imagePath": "assets/psu.jpg"
+    },
+    {
+      "productId": "ITM-013",
+      "name": "Gabinete NZXT H7 Flow",
+      "category": "Componentes",
+      "price": 3200.00,
+      "currency": "MXN",
+      "stock": 9,
+      "specs": {
+        "formFactor": "Mid Tower",
+        "coolingSupport": "360mm Radiator"
+      },
+      "imagePath": "assets/case.jpg"
+    },
+    {
+      "productId": "ITM-014",
+      "name": "Microsoft Office 365 Personal",
+      "category": "Software",
+      "price": 1299.00,
+      "currency": "MXN",
+      "stock": 50,
+      "specs": {
+        "license": "1 usuario",
+        "duration": "1 año"
+      },
+      "imagePath": "assets/office365.jpg"
+    },
+    {
+      "productId": "ITM-015",
+      "name": "Adobe Photoshop CC",
+      "category": "Software",
+      "price": 5200.00,
+      "currency": "MXN",
+      "stock": 35,
+      "specs": {
+        "license": "1 usuario",
+        "duration": "1 año"
+      },
+      "imagePath": "assets/photoshop.jpg"
+    },
+    {
+      "productId": "ITM-016",
+      "name": "Autodesk AutoCAD 2026",
+      "category": "Software",
+      "price": 8900.00,
+      "currency": "MXN",
+      "stock": 12,
+      "specs": {
+        "license": "1 usuario",
+        "duration": "1 año"
+      },
+      "imagePath": "assets/autocad.jpg"
+    },
+    {
+      "productId": "ITM-017",
+      "name": "JetBrains IntelliJ IDEA Ultimate",
+      "category": "Software",
+      "price": 4500.00,
+      "currency": "MXN",
+      "stock": 20,
+      "specs": {
+        "license": "1 usuario",
+        "duration": "1 año"
+      },
+      "imagePath": "assets/intellij.jpg"
+    },
+    {
+      "productId": "ITM-018",
+      "name": "Kaspersky Internet Security",
+      "category": "Software",
+      "price": 950.00,
+      "currency": "MXN",
+      "stock": 40,
+      "specs": {
+        "license": "3 dispositivos",
+        "duration": "1 año"
+      },
+      "imagePath": "assets/kaspersky.jpg"
     }
   ]
 }

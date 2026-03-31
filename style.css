@@ -140,6 +140,13 @@ body {
     text-align: right;
 }
 
+.product-card ul {
+    color: #555;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
 .btn-agregar {
     background: var(--yinmn-blue);
     color: var(--white);
@@ -166,6 +173,21 @@ body {
     cursor: not-allowed;
     font-weight: 600;
     opacity: 0.7;
+}
+
+#search-bar {
+    width: 30%;
+    padding: 8px 12px;
+    border-color: var(--oxford-blue);
+    margin-top: 15px;
+    box-shadow: var(--shadow);
+    border-radius: 2px;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: var(--yinmn-blue);
+    box-shadow: 0 0 5px var(--yinmn-blue);
 }
 
 /* Footer */
@@ -222,8 +244,4 @@ body {
     font-weight: 600;
     text-transform: uppercase; 
     transition: color 0.3s;
-}
-
-.search-icon {
-    display: none;
 }

@@ -1,5 +1,6 @@
 const API_URL = './scripts/productos.json'; 
 const catalogContainer = document.getElementById('catalogo');
+const searchBar = document.getElementById('search-bar');
 
 let todosLosProductos = [];
 let carrito = JSON.parse(localStorage.getItem('carritoMercaUP')) || [];
@@ -21,7 +22,6 @@ let carrito = JSON.parse(localStorage.getItem('carritoMercaUP')) || [];
     }
 }
 
-// 3. Capa de UI (Renderizado Determinístico sin Inline CSS/JS)
 function renderCatalog(productsArray) {
     catalogContainer.innerHTML = ''; 
     const fragment = document.createDocumentFragment();
@@ -42,6 +42,10 @@ function renderCatalog(productsArray) {
             <h3>${product.name}</h3>
             <p>Categoría: ${product.category}</p>
             <p>Stock: ${product.stock}</p>
+            <p>Specs:</p>
+            <ul>
+                ${Object.entries(product.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}
+            </ul>
             <p><strong>Precio: $${product.price.toFixed(2)} ${product.currency}</strong></p>
             <button class="${buttonClass}" data-id="${product.productId}" ${disableAttr}>
                 ${buttonText}
@@ -59,6 +63,11 @@ catalogContainer.addEventListener('click', (event) => {
         const productoId = event.target.getAttribute('data-id');
         agregarAlCarrito(productoId);
     }
+});
+
+searchBar.addEventListener('input', (event) => {
+    const termino = event.target.value;
+    filtrarCatalogo(termino);
 });
 
 function agregarAlCarrito(productoId) {
