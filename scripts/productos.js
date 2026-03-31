@@ -1,33 +1,16 @@
-const API_URL = './scripts/productos.JSON';
+const API_URL = './scripts/productos.json'; 
 const catalogContainer = document.getElementById('catalogo');
 
-// persistencia de datos
-let carrito = JSON.parse(localStorage.getItem('carritoMercaUP')) || [];
 let todosLosProductos = [];
+let carrito = JSON.parse(localStorage.getItem('carritoMercaUP')) || [];
 
-// para cuando muestre el carrito y se agregue un producto
-window.agregarAlCarrito = function(productoId){
-    carrito.push(productoId); 
-    localStorage.setItem('carritoMercaUP', JSON.stringify(carrito));
-
-    console.log("Producto agregado: ", productoId);
-
-    alert("¡Producto añadido al carrito!")
-}
-
-async function fetchProducts() {
+ async function fetchProducts() {
     try {
         const response = await fetch(API_URL);
-        
-        if (!response.ok) {
-            throw new Error(`Error de Red: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Error de Red: ${response.status}`);
 
         const jsonPayload = await response.json();
-
-        if (jsonPayload.metadata.status !== 200) {
-            throw new Error('La API retornó un estado comprometido.');
-        }
+        if (jsonPayload.metadata.status !== 200) throw new Error('Estado de API comprometido.');
 
         todosLosProductos = jsonPayload.data;
         renderCatalog(todosLosProductos);
@@ -38,44 +21,60 @@ async function fetchProducts() {
     }
 }
 
+// 3. Capa de UI (Renderizado Determinístico sin Inline CSS/JS)
 function renderCatalog(productsArray) {
     catalogContainer.innerHTML = ''; 
-    
     const fragment = document.createDocumentFragment();
 
     productsArray.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
-        
+
         const imageFile = product.imagePath.replace('.png', '.jpg');
-        
-        //para el botón cuando hay o no producto en stock
         const hayExistencias = product.stock > 0;
-        const buttonColor = hayExistencias ? 'gray' : 'black';
-        const buttonState = hayExistencias ? '' : 'disabled';
+        
+        const buttonClass = hayExistencias ? 'btn-agregar' : 'btn-agotado';
         const buttonText = hayExistencias ? 'Agregar al carrito' : 'Agotado';
+        const disableAttr = hayExistencias ? '' : 'disabled';
 
         productCard.innerHTML = `
             <img src="${imageFile}" alt="${product.name}" style="max-width: 100%; border-radius: 8px;">
             <h3>${product.name}</h3>
             <p>Categoría: ${product.category}</p>
+            <p>Stock: ${product.stock}</p>
             <p><strong>Precio: $${product.price.toFixed(2)} ${product.currency}</strong></p>
-            <button style="background-color: ${buttonColor}; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: ${hayExistencias ? 'pointer' : 'not-allowed'};" onclick="agregarAlCarrito('${product.productId}')" ${buttonState}>${buttonText}</button>
+            <button class="${buttonClass}" data-id="${product.productId}" ${disableAttr}>
+                ${buttonText}
+            </button>
         `;
-        
+
         fragment.appendChild(productCard);
     });
 
     catalogContainer.appendChild(fragment);
 }
 
-document.addEventListener('DOMContentLoaded', fetchProducts);
+catalogContainer.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON' && !event.target.disabled) {
+        const productoId = event.target.getAttribute('data-id');
+        agregarAlCarrito(productoId);
+    }
+});
+
+function agregarAlCarrito(productoId) {
+    carrito.push(productoId); 
+    localStorage.setItem('carritoMercaUP', JSON.stringify(carrito));
+    console.log(`[Store] Producto ${productoId} en carrito. Total: ${carrito.length}`);
+    alert("¡Producto añadido al carrito!");
+}
 
 function filtrarCatalogo(termino){
-    const terminoMinusculas = termino.toLowerCase();
+    const terminoMinusculas = termino.toLowerCase().trim();
     const productosFiltrados = todosLosProductos.filter(producto => {
         return producto.name.toLowerCase().includes(terminoMinusculas) || 
                producto.category.toLowerCase().includes(terminoMinusculas);
     });
     renderCatalog(productosFiltrados);
 }
+
+document.addEventListener('DOMContentLoaded', fetchProducts);
